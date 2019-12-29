@@ -10,13 +10,13 @@ def NextVersion
          timeout(time: 30, unit: 'MINUTES')
      }
     environment {
-    registry = "rozdockerforever/dev"
+    registry = "rozdockerforever/dev" // fix with the correct repo
     registryCredential = 'dockerhub'
     //dockerImage = ''
     }
      agent { label 'jenny_slave' }
      stages {
-         stage('Checkout') {
+         stage('Checkout') {   //uncomment relevant
              steps {
                  script {
                    //  node('master'){
@@ -32,7 +32,7 @@ def NextVersion
                          deleteDir()
                          checkout([$class: 'GitSCM', branches: [[name: 'Dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git_rd_cred', url: 'https://github.com/roz-Devops/INT_API.git']]])
                   //       Commit_Id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-                         BuildVersion = '1.0.0'
+                         BuildVersion = '1.0.0'  // hardcoded version ?
                     //     last_digit_current_version = sh(script: "echo $Current_version | cut -d'.' -f3", returnStdout: true).trim()
                     //     NextVersion = sh(script: "echo $Current_version | cut -d. -f1", returnStdout: true).trim() + '.' + sh(script: "echo $Current_version |cut -d'.' -f2", returnStdout: true).trim() + '.' + (Integer.parseInt(last_digit_current_version) + 1)
                          println("Checking the build version: $BuildVersion")
