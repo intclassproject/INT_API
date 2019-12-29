@@ -22,7 +22,7 @@ def NextVersion
                    //  node('master'){
                        //  dir('Release') {
                         //     deleteDir()
-                        //     checkout([$class: 'GitSCM', branches: [[name: 'Prod']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git-cred-id', url: "https://github.com/intclassproject/Release.git"]]])
+                        //     checkout([$class: 'GitSCM', branches: [[name: 'michael']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git-cred-id', url: "https://github.com/intclassproject/Release.git"]]])
                      //        path_json_file = sh(script: "pwd", returnStdout: true).trim() + '/' + 'Prod' + '.json'
                          //    Current_version = Return_Json_From_File("$path_json_file").release.services.intapi.version
                          //}
