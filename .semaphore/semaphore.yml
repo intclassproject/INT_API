@@ -1,20 +1,20 @@
 version: v1.0
-name: Test MyApp
+name: Go
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-
 blocks:
   - name: Test
     task:
       jobs:
-        - name: Test
+        - name: go test
           commands:
+            - sem-version go 1.11
+            - "export GO111MODULE=on"
+            - "export GOPATH=~/go"
+            - "export PATH=/home/semaphore/go/bin:$PATH"
             - checkout
-            - sem-version node 12
-            - cache restore
-            - npm install
-            - cache store
-            - npm run build --if-present
-            - npm test
+            - go get ./...
+            - go test ./...
+            - go build -v .
