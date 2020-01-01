@@ -1,13 +1,15 @@
 version: v1.0
-name: Initial Pipeline
+name: Docker
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: 'Block #1'
+  - name: Build
     task:
       jobs:
-        - name: 'Job #1'
+        - name: docker build
           commands:
             - checkout
+            - docker build -t your-image .
+            - echo "Set up credentials through secret and push to your registry"
